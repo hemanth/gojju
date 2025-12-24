@@ -1078,21 +1078,25 @@ print("Gojju loaded!")
                 // Escape the code for Python string
                 const escapedCode = code.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
-                const result = await pyodide.runPythonAsync(`
+                // Run with proper result capture
+                await pyodide.runPythonAsync(`
+_gojju_code = '''${escapedCode}'''
 try:
-    result = run('${escapedCode}')
-    if result is None:
-        "nil"
+    _gojju_result = run(_gojju_code)
+    if _gojju_result is None:
+        _gojju_output = "nil"
     else:
-        repr(result)
+        _gojju_output = repr(_gojju_result)
 except Exception as e:
-    f"Error: {e}"
+    _gojju_output = f"Error: {e}"
 `);
 
-                if (result.startsWith('Error:')) {
+                const result = pyodide.globals.get('_gojju_output');
+
+                if (result && result.startsWith('Error:')) {
                     resultLine.innerHTML = `<span class="repl-error">${escapeHtml(result)}</span>`;
                 } else {
-                    resultLine.innerHTML = `<span class="repl-result">=> ${escapeHtml(result)}</span>`;
+                    resultLine.innerHTML = `<span class="repl-result">=> ${escapeHtml(result || 'nil')}</span>`;
                 }
             } catch (error) {
                 resultLine.innerHTML = `<span class="repl-error">Error: ${escapeHtml(error.message)}</span>`;
