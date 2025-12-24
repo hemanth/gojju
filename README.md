@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Gojju Logo" width="180">
+  <img src="https://raw.githubusercontent.com/hemanth/gojju/main/logo.png" alt="Gojju Logo" width="180">
 </p>
 
 <h1 align="center">Gojju 🌶️</h1>
