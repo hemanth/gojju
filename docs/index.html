@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gojju - The Essence of Five Languages</title>
-    <meta name="description" content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
-    
+    <meta name="description"
+        content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hemanth.github.io/gojju/">
+    <meta property="og:title" content="Gojju - The Essence of Five Languages">
+    <meta property="og:description"
+        content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
+    <meta property="og:image" content="https://hemanth.github.io/gojju/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gojju - The Essence of Five Languages">
+    <meta name="twitter:description"
+        content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
+    <meta name="twitter:image" content="https://hemanth.github.io/gojju/og-image.png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg-primary: #0d1117;
@@ -28,20 +46,20 @@
             --success: #3fb950;
             --code-bg: #1a1f26;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
         }
-        
+
         /* Hero Section */
         .hero {
             text-align: center;
@@ -49,44 +67,44 @@
             background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             border-bottom: 1px solid var(--border);
         }
-        
+
         .logo {
             width: 120px;
             height: 120px;
             margin-bottom: 1.5rem;
             border-radius: 24px;
         }
-        
+
         h1 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-        
+
         .tagline {
             font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
-        
+
         .description {
             max-width: 600px;
             margin: 0 auto 2rem;
             color: var(--text-secondary);
         }
-        
+
         .description a {
             color: var(--accent);
             text-decoration: none;
         }
-        
+
         .cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .btn {
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -94,27 +112,27 @@
             text-decoration: none;
             transition: all 0.2s;
         }
-        
+
         .btn-primary {
             background: var(--accent);
             color: white;
         }
-        
+
         .btn-primary:hover {
             background: var(--accent-light);
             transform: translateY(-2px);
         }
-        
+
         .btn-secondary {
             background: var(--bg-tertiary);
             color: var(--text-primary);
             border: 1px solid var(--border);
         }
-        
+
         .btn-secondary:hover {
             background: var(--border);
         }
-        
+
         /* Install Command */
         .install-cmd {
             display: inline-flex;
@@ -128,11 +146,11 @@
             margin: 1.5rem 0;
             border: 1px solid var(--border);
         }
-        
+
         .install-cmd code {
             color: var(--success);
         }
-        
+
         .copy-btn {
             background: none;
             border: none;
@@ -140,37 +158,37 @@
             cursor: pointer;
             padding: 0.25rem;
         }
-        
+
         .copy-btn:hover {
             color: var(--text-primary);
         }
-        
+
         /* Features Grid */
         .features {
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .features h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-        
+
         .feature-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 1.5rem;
         }
-        
+
         .feature-card h3 {
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
@@ -178,16 +196,16 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .feature-card ul {
             list-style: none;
             color: var(--text-secondary);
         }
-        
+
         .feature-card li {
             padding: 0.25rem 0;
         }
-        
+
         .feature-card code {
             background: var(--code-bg);
             padding: 0.15rem 0.4rem;
@@ -196,7 +214,7 @@
             font-size: 0.85rem;
             color: var(--accent-light);
         }
-        
+
         /* REPL Section */
         .repl-section {
             padding: 4rem 2rem;
@@ -204,19 +222,19 @@
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
-        
+
         .repl-section h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         .repl-section .subtitle {
             text-align: center;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
-        
+
         .repl-container {
             max-width: 800px;
             margin: 0 auto;
@@ -225,7 +243,7 @@
             border-radius: 12px;
             overflow: hidden;
         }
-        
+
         .repl-header {
             background: var(--bg-tertiary);
             padding: 0.75rem 1rem;
@@ -234,23 +252,31 @@
             gap: 0.5rem;
             border-bottom: 1px solid var(--border);
         }
-        
+
         .repl-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
         }
-        
-        .repl-dot.red { background: #ff5f56; }
-        .repl-dot.yellow { background: #ffbd2e; }
-        .repl-dot.green { background: #27c93f; }
-        
+
+        .repl-dot.red {
+            background: #ff5f56;
+        }
+
+        .repl-dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .repl-dot.green {
+            background: #27c93f;
+        }
+
         .repl-title {
             margin-left: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.875rem;
         }
-        
+
         .repl-output {
             padding: 1rem;
             font-family: 'JetBrains Mono', monospace;
@@ -259,35 +285,35 @@
             max-height: 400px;
             overflow-y: auto;
         }
-        
+
         .repl-line {
             margin-bottom: 0.25rem;
         }
-        
+
         .repl-prompt {
             color: var(--accent);
         }
-        
+
         .repl-result {
             color: var(--success);
         }
-        
+
         .repl-error {
             color: #f85149;
         }
-        
+
         .repl-input-container {
             display: flex;
             border-top: 1px solid var(--border);
             background: var(--code-bg);
         }
-        
+
         .repl-input-prompt {
             padding: 1rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
         }
-        
+
         #repl-input {
             flex: 1;
             background: transparent;
@@ -298,20 +324,20 @@
             padding: 1rem 1rem 1rem 0;
             outline: none;
         }
-        
+
         /* Code Examples */
         .examples {
             padding: 4rem 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
-        
+
         .examples h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
         }
-        
+
         .code-block {
             background: var(--code-bg);
             border: 1px solid var(--border);
@@ -319,7 +345,7 @@
             margin-bottom: 2rem;
             overflow: hidden;
         }
-        
+
         .code-header {
             background: var(--bg-tertiary);
             padding: 0.5rem 1rem;
@@ -327,18 +353,18 @@
             color: var(--text-secondary);
             border-bottom: 1px solid var(--border);
         }
-        
+
         .code-block pre {
             margin: 0;
             padding: 1rem;
             overflow-x: auto;
         }
-        
+
         .code-block code {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
         }
-        
+
         /* Footer */
         footer {
             text-align: center;
@@ -346,20 +372,29 @@
             color: var(--text-secondary);
             border-top: 1px solid var(--border);
         }
-        
+
         footer a {
             color: var(--accent);
             text-decoration: none;
         }
-        
+
         /* Responsive */
         @media (max-width: 640px) {
-            h1 { font-size: 2rem; }
-            .tagline { font-size: 1rem; }
-            .features-grid { grid-template-columns: 1fr; }
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Hero -->
     <section class="hero">
@@ -367,22 +402,22 @@
         <h1>Gojju 🌶️</h1>
         <p class="tagline">The essence of Python • Ruby • Haskell • Perl • JavaScript</p>
         <p class="description">
-            <strong>Gojju</strong> (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in 
-            <a href="https://en.wikipedia.org/wiki/Kannada">Kannada</a>, 
+            <strong>Gojju</strong> (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in
+            <a href="https://en.wikipedia.org/wiki/Kannada">Kannada</a>,
             is a programming language that combines the best features from five beloved languages.
         </p>
-        
+
         <div class="install-cmd">
             <code>pip install gojju</code>
             <button class="copy-btn" onclick="copyInstall()" title="Copy">📋</button>
         </div>
-        
+
         <div class="cta-buttons">
             <a href="https://github.com/hemanth/gojju" class="btn btn-primary">GitHub</a>
             <a href="https://pypi.org/project/gojju/" class="btn btn-secondary">PyPI</a>
         </div>
     </section>
-    
+
     <!-- Features -->
     <section class="features">
         <h2>Features at a Glance</h2>
@@ -437,12 +472,12 @@
             </div>
         </div>
     </section>
-    
+
     <!-- REPL -->
     <section class="repl-section">
         <h2>Try Gojju</h2>
         <p class="subtitle">Interactive playground (simulated)</p>
-        
+
         <div class="repl-container">
             <div class="repl-header">
                 <span class="repl-dot red"></span>
@@ -452,7 +487,8 @@
             </div>
             <div class="repl-output" id="repl-output">
                 <div class="repl-line">Welcome to Gojju 0.1.0 🌶️</div>
-                <div class="repl-line" style="color: var(--text-secondary)">Type expressions to evaluate. Try: [1,2,3] |> sum</div>
+                <div class="repl-line" style="color: var(--text-secondary)">Type expressions to evaluate. Try: [1,2,3]
+                    |> sum</div>
             </div>
             <div class="repl-input-container">
                 <span class="repl-input-prompt">gojju&gt;</span>
@@ -460,11 +496,11 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Examples -->
     <section class="examples">
         <h2>Code Examples</h2>
-        
+
         <div class="code-block">
             <div class="code-header">Functional Pipeline</div>
             <pre><code class="language-javascript"># Pipe operator for elegant data transformations
@@ -474,7 +510,7 @@
   |> sum
 # => 12</code></pre>
         </div>
-        
+
         <div class="code-block">
             <div class="code-header">Pattern Matching</div>
             <pre><code class="language-javascript">fn describe(n)
@@ -488,7 +524,7 @@ end
 
 describe(5)  # => "small"</code></pre>
         </div>
-        
+
         <div class="code-block">
             <div class="code-header">Functions & Lambdas</div>
             <pre><code class="language-javascript"># Regular function
@@ -508,31 +544,31 @@ let add5 = curry2(add)(5)
 add5(10)  # => 15</code></pre>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <p>Made with ❤️ and a dash of 🌶️</p>
         <p style="margin-top: 0.5rem;">
-            <a href="https://github.com/hemanth/gojju">GitHub</a> • 
-            <a href="https://pypi.org/project/gojju/">PyPI</a> • 
+            <a href="https://github.com/hemanth/gojju">GitHub</a> •
+            <a href="https://pypi.org/project/gojju/">PyPI</a> •
             <a href="https://github.com/hemanth/gojju/tree/main/examples">Examples</a>
         </p>
     </footer>
-    
+
     <!-- Prism.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
+
     <script>
         function copyInstall() {
             navigator.clipboard.writeText('pip install gojju');
             alert('Copied: pip install gojju');
         }
-        
+
         // Simple REPL simulation
         const replOutput = document.getElementById('repl-output');
         const replInput = document.getElementById('repl-input');
-        
+
         const examples = {
             'let x = 5': '5',
             'x': '5',
@@ -552,24 +588,24 @@ add5(10)  # => 15</code></pre>
             'len("hello")': '5',
             'sum([1,2,3,4,5])': '15',
         };
-        
+
         let memory = {};
-        
+
         replInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const code = replInput.value.trim();
                 if (!code) return;
-                
+
                 // Add input line
                 const inputLine = document.createElement('div');
                 inputLine.className = 'repl-line';
                 inputLine.innerHTML = `<span class="repl-prompt">gojju&gt;</span> ${escapeHtml(code)}`;
                 replOutput.appendChild(inputLine);
-                
+
                 // Process and add result
                 const resultLine = document.createElement('div');
                 resultLine.className = 'repl-line';
-                
+
                 let result;
                 if (examples[code]) {
                     result = examples[code];
@@ -595,13 +631,13 @@ add5(10)  # => 15</code></pre>
                 } else {
                     resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
                 }
-                
+
                 replOutput.appendChild(resultLine);
                 replOutput.scrollTop = replOutput.scrollHeight;
                 replInput.value = '';
             }
         });
-        
+
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
@@ -609,4 +645,5 @@ add5(10)  # => 15</code></pre>
         }
     </script>
 </body>
+
 </html>
