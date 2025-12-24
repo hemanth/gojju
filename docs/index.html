@@ -794,11 +794,11 @@
                 examples: ["abs(-5)", "sqrt(16)", "pow(2, 10)"]
             },
             {
-                title: "String Interpolation",
-                content: `<h3>String Interpolation (from Ruby)</h3>
-                    <p>Embed expressions in strings using <code>#{expr}</code> syntax.</p>
-                    <p>Much cleaner than concatenation!</p>`,
-                examples: ['"hello".upper()', '"gojju".len()', 'len("hello world")']
+                title: "String Methods",
+                content: `<h3>String Methods (from Ruby/JS)</h3>
+                    <p>Strings have many useful methods: <code>upper</code>, <code>lower</code>, <code>len</code>, <code>split</code>, <code>reverse</code>.</p>
+                    <p>Chain them for powerful text processing!</p>`,
+                examples: ['"hello".upper()', '"gojju".len()', '"Hello World".lower()']
             },
             {
                 title: "Ternary & Guards",
@@ -914,6 +914,7 @@
             'abs(-5)': '5',
             'sqrt(16)': '4.0',
             'pow(2, 10)': '1024',
+            '"Hello World".lower()': '"hello world"',
         };
 
         let memory = { x: '42', name: '"Gojju"' };
