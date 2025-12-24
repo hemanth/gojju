@@ -780,25 +780,25 @@
                 examples: ['"hello".upper()', '"gojju".len()', 'len("hello world")']
             },
             {
-                title: "Pattern Matching",
-                content: `<h3>Pattern Matching (from Haskell)</h3>
-                    <p>Use <code>match</code> for elegant conditionals. Add guards with <code>if</code>.</p>
-                    <p>Syntax: <code>match value: 0 -> "zero" | n if n < 0 -> "negative" | _ -> "positive" end</code></p>`,
-                examples: ["5 > 3", "10 == 10", "type(42)", "type([1,2,3])"]
+                title: "Ternary & Guards",
+                content: `<h3>Conditional Expressions</h3>
+                    <p>Use ternary: <code>condition ? then : else</code></p>
+                    <p>Chain conditions for complex logic!</p>`,
+                examples: ["5 > 3 ? \"yes\" : \"no\"", "10 == 10", "true ? 1 : 0", "false ? 1 : 0"]
             },
             {
-                title: "Compose & Curry",
-                content: `<h3>Function Composition</h3>
-                    <p><code>compose(f, g)</code> combines functions so compose(f, g)(x) = f(g(x))</p>
-                    <p>Chain operations elegantly with the pipe operator!</p>`,
-                examples: ["[1,2,3,4,5] |> filter(\\x -> x > 2) |> sum", "range(1, 6) |> map(\\x -> x * x)", "[1,2,3] |> reverse"]
+                title: "List Methods",
+                content: `<h3>Powerful List Operations</h3>
+                    <p>Lists have many built-in methods you can chain together.</p>
+                    <p>Try <code>reverse</code>, <code>sort</code>, <code>unique</code>, and more!</p>`,
+                examples: ["[3, 1, 2] |> sort", "[1, 2, 3] |> reverse", "unique([1, 1, 2, 2, 3])", "flatten([[1, 2], [3, 4]])"]
             },
             {
                 title: "Reduce & Fold",
                 content: `<h3>Reducing Lists</h3>
-                    <p><code>reduce(fn, list)</code> combines all elements into a single value.</p>
-                    <p>Great for sums, products, or building complex results!</p>`,
-                examples: ["sum([1, 2, 3, 4, 5])", "product([1, 2, 3, 4])", "[1, 2, 3] |> reverse", "unique([1, 2, 2, 3, 3])"]
+                    <p><code>sum</code> and <code>product</code> reduce lists to single values.</p>
+                    <p>Great for aggregations!</p>`,
+                examples: ["sum([1, 2, 3, 4, 5])", "product([1, 2, 3, 4])", "min([5, 2, 8, 1])", "max([5, 2, 8, 1])"]
             },
             {
                 title: "Boolean Logic",
@@ -867,6 +867,13 @@
             '5 > 3': 'true',
             '10 == 10': 'true',
             '5 > 3 and 2 < 4': 'true',
+            '5 > 3 ? "yes" : "no"': '"yes"',
+            'true ? 1 : 0': '1',
+            'false ? 1 : 0': '0',
+            '[3, 1, 2] |> sort': '[1, 2, 3]',
+            '[1, 2, 3] |> reverse': '[3, 2, 1]',
+            'unique([1, 1, 2, 2, 3])': '[1, 2, 3]',
+            'flatten([[1, 2], [3, 4]])': '[1, 2, 3, 4]',
             'type(42)': '"integer"',
             'type([1,2,3])': '"list"',
             'head([])': 'nil',
@@ -874,8 +881,8 @@
             'tail([1])': '[]',
             'sum([1, 2, 3, 4, 5])': '15',
             'product([1, 2, 3, 4])': '24',
-            'unique([1, 2, 2, 3, 3])': '[1, 2, 3]',
-            '[1, 2, 3] |> reverse': '[3, 2, 1]',
+            'min([5, 2, 8, 1])': '1',
+            'max([5, 2, 8, 1])': '8',
             'range(1, 11) |> sum': '55',
         };
 
