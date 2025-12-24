@@ -559,29 +559,159 @@
         }
 
         @media (max-width: 640px) {
+            .container {
+                padding: 0.5rem;
+            }
+
             h1 {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
             }
 
             .tagline {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+                padding: 0 0.5rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
             }
 
-            .lesson-item {
-                min-width: 100px;
+            .feature-card {
+                padding: 1rem;
+            }
+
+            .playground-section {
+                padding: 1rem 0.5rem;
+            }
+
+            .playground-container {
                 padding: 0.5rem;
             }
 
+            /* REPL Mobile Fixes */
+            .repl-area {
+                min-height: 350px;
+            }
+
+            .repl-output {
+                height: 200px;
+                min-height: 150px;
+                font-size: 0.75rem;
+                padding: 0.5rem;
+            }
+
+            .repl-line {
+                word-break: break-all;
+            }
+
+            .repl-input-container {
+                flex-wrap: nowrap;
+            }
+
+            .repl-input-prompt {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            #repl-input {
+                font-size: 16px;
+                /* Prevents iOS zoom on focus */
+                padding: 0.5rem 0.5rem 0.5rem 0;
+                min-width: 0;
+            }
+
+            /* Lesson content mobile */
+            .lesson-content {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .lesson-content h3 {
+                font-size: 1rem;
+            }
+
+            .lesson-content code {
+                font-size: 0.75rem;
+                word-break: break-all;
+            }
+
+            .example-btn {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.7rem;
+                word-break: break-all;
+                white-space: normal;
+                text-align: left;
+            }
+
+            .examples {
+                gap: 0.4rem;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+            }
+
+            .nav-btn {
+                flex: 1;
+                min-width: 80px;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .lesson-item {
+                min-width: 90px;
+                padding: 0.4rem;
+            }
+
             .lesson-number {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
             }
 
             .lesson-title {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+            }
+
+            /* Install command */
+            .install-cmd {
+                padding: 0.5rem 0.75rem;
+            }
+
+            .install-cmd code {
+                font-size: 0.8rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+
+            footer p {
+                word-break: break-word;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .lesson-item {
+                min-width: 75px;
+            }
+
+            .example-btn {
+                font-size: 0.65rem;
+            }
+
+            #repl-input {
+                font-size: 16px;
             }
         }
     </style>
