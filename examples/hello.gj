@@ -1,0 +1,67 @@
+# Gojju Examples: Hello World & Basics
+# =====================================
+
+# Simple hello world
+print("Hello from Gojju! 🌶️")
+
+# Variables (immutable by default)
+let greeting = "Namaste"
+let name = "World"
+print("#{greeting}, #{name}!")
+
+# Mutable variables
+mut counter = 0
+counter = counter + 1
+print("Counter: #{counter}")
+
+# Functions with implicit return
+fn greet(name)
+  "Hello, #{name}!"
+end
+
+print(greet("Gojju"))
+
+# Arrow functions (lambdas)
+let double = (x) => x * 2
+let triple = (x) => x * 3
+print("Double 5: #{double(5)}")
+print("Triple 5: #{triple(5)}")
+
+# Haskell-style lambda
+let inc = \x -> x + 1
+print("Increment 10: #{inc(10)}")
+
+# List operations
+let numbers = [1, 2, 3, 4, 5]
+print("Numbers: #{numbers}")
+print("Head: #{head(numbers)}")
+print("Tail: #{tail(numbers)}")
+print("Sum: #{sum(numbers)}")
+
+# Control flow
+fn fizzbuzz(n)
+  match n % 15
+    0 -> "FizzBuzz"
+    3 -> "Fizz"
+    5 -> "Buzz"
+    6 -> "Fizz"
+    9 -> "Fizz"
+    10 -> "Buzz"
+    12 -> "Fizz"
+    _ -> str(n)
+  end
+end
+
+print("FizzBuzz for 15: #{fizzbuzz(15)}")
+
+# Postfix conditionals (Ruby-style)
+let happy = true
+print("I'm happy!" if happy)
+
+# Unless (negated if)
+let error = false
+unless error
+  print("No errors!")
+end
+
+print("\n✨ Gojju is ready to go!")

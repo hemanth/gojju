@@ -1,0 +1,121 @@
+# Gojju Examples: Pattern Matching & Algebraic Data Types
+# ========================================================
+
+print("=== Pattern Matching in Gojju ===\n")
+
+# Basic pattern matching
+fn describe_number(n)
+  match n
+    0 -> "zero"
+    1 -> "one"
+    2 -> "two"
+    n if n < 0 -> "negative"
+    n if n < 10 -> "small positive"
+    n if n < 100 -> "medium positive"
+    _ -> "large"
+  end
+end
+
+print("0 is: #{describe_number(0)}")
+print("-5 is: #{describe_number(-5)}")
+print("7 is: #{describe_number(7)}")
+print("42 is: #{describe_number(42)}")
+print("999 is: #{describe_number(999)}")
+
+# Pattern matching with lists
+fn list_description(lst)
+  match len(lst)
+    0 -> "empty list"
+    1 -> "singleton: #{head(lst)}"
+    2 -> "pair: #{lst[0]} and #{lst[1]}"
+    n if n < 5 -> "short list of #{n} items"
+    _ -> "long list"
+  end
+end
+
+print("\n[] is: #{list_description([])}")
+print("[42] is: #{list_description([42])}")
+print("[1, 2] is: #{list_description([1, 2])}")
+print("[1, 2, 3] is: #{list_description([1, 2, 3])}")
+print("[1..10] is: #{list_description(range(1, 11))}")
+
+# Maybe monad for safe operations
+fn safe_divide(a, b)
+  if b == 0
+    Nothing()
+  else
+    Just(a / b)
+  end
+end
+
+let result1 = safe_divide(10, 2)
+print("\n10 / 2 = #{result1}")
+
+let result2 = safe_divide(10, 0)
+print("10 / 0 = #{result2}")
+
+# Either for error handling
+fn parse_int(s)
+  match s
+    "0" -> Right(0)
+    "1" -> Right(1)
+    "2" -> Right(2)
+    "3" -> Right(3)
+    "4" -> Right(4)
+    "5" -> Right(5)
+    _ -> Left("Cannot parse: #{s}")
+  end
+end
+
+print("\nParsing '3': #{parse_int('3')}")
+print("Parsing 'x': #{parse_int('x')}")
+
+# Recursive pattern matching example
+fn factorial(n)
+  match n
+    0 -> 1
+    1 -> 1
+    n if n > 0 -> n * factorial(n - 1)
+    _ -> 0
+  end
+end
+
+print("\nFactorial 5: #{factorial(5)}")
+print("Factorial 10: #{factorial(10)}")
+
+# Fibonacci with pattern matching
+fn fib(n)
+  match n
+    0 -> 0
+    1 -> 1
+    n -> fib(n - 1) + fib(n - 2)
+  end
+end
+
+print("\nFibonacci sequence:")
+let fibs = [fib(x) for x in range(0, 12)]
+print(fibs)
+
+# Type checking with pattern matching
+fn type_check(val)
+  let t = type(val)
+  match t
+    "integer" -> "It's a whole number"
+    "float" -> "It's a decimal number"
+    "string" -> "It's text"
+    "list" -> "It's a collection"
+    "boolean" -> "It's true or false"
+    "nil" -> "It's nothing"
+    _ -> "Unknown type: #{t}"
+  end
+end
+
+print("\nType checks:")
+print("42: #{type_check(42)}")
+print("3.14: #{type_check(3.14)}")
+print("'hello': #{type_check('hello')}")
+print("[1,2,3]: #{type_check([1, 2, 3])}")
+print("true: #{type_check(true)}")
+print("nil: #{type_check(nil)}")
+
+print("\n✨ Pattern matching made elegant!")
