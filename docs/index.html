@@ -780,10 +780,10 @@
                 examples: ["range(1, 10) |> filter(\\x -> x % 2 == 0) |> sum", "[5,3,8,1] |> sort |> reverse", "range(1, 6) |> map(\\x -> x * x) |> sum"]
             },
             {
-                title: "Compose & Curry",
-                content: `<h3>Advanced FP Patterns</h3>
-                    <p><code>compose(f, g)</code> creates a new function: compose(f, g)(x) = f(g(x))</p>
-                    <p><code>curry</code> and <code>partial</code> let you pre-fill function arguments!</p>`,
+                title: "FP Utilities",
+                content: `<h3>Functional Programming Helpers</h3>
+                    <p><code>id(x)</code> returns x unchanged. <code>const(x)</code> creates a function that always returns x.</p>
+                    <p><code>flip(f)</code> swaps argument order: flip(f)(a, b) = f(b, a)</p>`,
                 examples: ["id(42)", "const(5)(99)", "flip(pow)(2, 3)"]
             },
             {
