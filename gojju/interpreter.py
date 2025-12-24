@@ -33,14 +33,21 @@ class ContinueLoop(Exception):
 
 class UserFunction:
     """A user-defined function."""
-    def __init__(self, name: str, params: list, body: ASTNode, closure: Dict[str, Any]):
+    def __init__(self, name: str, params: list, body: ASTNode, closure: Dict[str, Any], interpreter=None):
         self.name = name
         self.params = params
         self.body = body
         self.closure = closure
+        self.interpreter = interpreter
     
     def __repr__(self):
         return f"<function {self.name}>"
+    
+    def __call__(self, *args):
+        """Make UserFunction callable for use with builtins like map/filter."""
+        if self.interpreter is None:
+            raise GojjuRuntimeError("UserFunction has no interpreter reference")
+        return self.interpreter._call_user_function(self, list(args))
 
 
 class Interpreter:
@@ -437,10 +444,18 @@ class Interpreter:
         raise GojjuRuntimeError(f"Cannot access property '{node.property}' on {type(obj).__name__}")
     
     def eval_Lambda(self, node: Lambda) -> UserFunction:
-        return UserFunction('<lambda>', node.params, node.body, self.env.copy())
+        return UserFunction('<lambda>', node.params, node.body, self.env.copy(), self)
     
     def eval_PipeExpr(self, node: PipeExpr) -> Any:
         value = self.evaluate(node.value)
+        
+        # If the function is a Call expression, inject value as last argument
+        if isinstance(node.function, Call):
+            callee = self.evaluate(node.function.callee)
+            args = [self.evaluate(arg) for arg in node.function.arguments] + [value]
+            return self._call_function(callee, args)
+        
+        # Otherwise, just call the function with the value
         func = self.evaluate(node.function)
         return self._call_function(func, [value])
     
@@ -610,7 +625,7 @@ class Interpreter:
             return False
     
     def eval_FunctionDef(self, node: FunctionDef) -> UserFunction:
-        func = UserFunction(node.name, node.params, node.body, self.env.copy())
+        func = UserFunction(node.name, node.params, node.body, self.env.copy(), self)
         self.env[node.name] = func
         return func
     
