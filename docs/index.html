@@ -22,6 +22,7 @@
     <meta name="twitter:description"
         content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
     <meta name="twitter:image" content="https://hemanth.github.io/gojju/og-image.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,34 +64,35 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1.5rem;
-            border-radius: 24px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            border-radius: 20px;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .tagline {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .description {
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         .description a {
@@ -106,11 +108,12 @@
         }
 
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.25rem;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
+            font-size: 0.9rem;
         }
 
         .btn-primary {
@@ -137,13 +140,13 @@
         .install-cmd {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             background: var(--code-bg);
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            margin: 1rem 0;
             border: 1px solid var(--border);
         }
 
@@ -156,7 +159,7 @@
             border: none;
             color: var(--text-secondary);
             cursor: pointer;
-            padding: 0.25rem;
+            font-size: 0.8rem;
         }
 
         .copy-btn:hover {
@@ -165,88 +168,199 @@
 
         /* Features Grid */
         .features {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .features h2 {
+        .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
         }
 
         .feature-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 10px;
+            padding: 1.25rem;
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
 
         .feature-card ul {
             list-style: none;
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .feature-card li {
-            padding: 0.25rem 0;
+            padding: 0.2rem 0;
         }
 
         .feature-card code {
             background: var(--code-bg);
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--accent-light);
         }
 
-        /* REPL Section */
-        .repl-section {
-            padding: 4rem 2rem;
+        /* Playground Section */
+        .playground-section {
+            padding: 3rem 2rem;
             background: var(--bg-secondary);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
-        .repl-section h2 {
-            text-align: center;
-            font-size: 2rem;
+        .playground-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 1.5rem;
+            min-height: 500px;
+        }
+
+        /* Lessons Sidebar */
+        .lessons-sidebar {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .lessons-header {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lessons-list {
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .lesson-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .lesson-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .lesson-item.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .lesson-item.completed {
+            border-left: 3px solid var(--success);
+        }
+
+        .lesson-number {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-item.active .lesson-number {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .lesson-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* REPL Area */
+        .repl-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lesson-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
             margin-bottom: 1rem;
         }
 
-        .repl-section .subtitle {
-            text-align: center;
+        .lesson-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-content p {
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-content code {
+            background: var(--code-bg);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+
+        .try-it {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+        }
+
+        .try-it-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .try-it code {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--success);
+            cursor: pointer;
+        }
+
+        .try-it code:hover {
+            text-decoration: underline;
         }
 
         .repl-container {
-            max-width: 800px;
-            margin: 0 auto;
+            flex: 1;
             background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .repl-header {
             background: var(--bg-tertiary);
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -254,8 +368,8 @@
         }
 
         .repl-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
         }
 
@@ -272,22 +386,36 @@
         }
 
         .repl-title {
+            flex: 1;
             margin-left: 0.5rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 0.8rem;
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.25rem;
+        }
+
+        .fullscreen-btn:hover {
+            color: var(--text-primary);
         }
 
         .repl-output {
-            padding: 1rem;
+            flex: 1;
+            padding: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            min-height: 200px;
-            max-height: 400px;
+            font-size: 0.85rem;
             overflow-y: auto;
+            min-height: 150px;
         }
 
         .repl-line {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         .repl-prompt {
@@ -309,9 +437,10 @@
         }
 
         .repl-input-prompt {
-            padding: 1rem;
+            padding: 0.75rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
         }
 
         #repl-input {
@@ -320,57 +449,70 @@
             border: none;
             color: var(--text-primary);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            padding: 1rem 1rem 1rem 0;
+            font-size: 0.85rem;
+            padding: 0.75rem 0.75rem 0.75rem 0;
             outline: none;
         }
 
-        /* Code Examples */
-        .examples {
-            padding: 4rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
         }
 
-        .examples h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .code-block {
-            background: var(--code-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .code-header {
-            background: var(--bg-tertiary);
+        .nav-btn {
             padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
         }
 
-        .code-block pre {
-            margin: 0;
+        .nav-btn:hover {
+            background: var(--border);
+        }
+
+        .nav-btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .nav-btn.primary:hover {
+            background: var(--accent-light);
+        }
+
+        /* Fullscreen mode */
+        .fullscreen .playground-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: none;
+            z-index: 1000;
+            background: var(--bg-secondary);
             padding: 1rem;
-            overflow-x: auto;
+            border-radius: 0;
         }
 
-        .code-block code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+        .fullscreen .lessons-sidebar {
+            max-height: none;
+        }
+
+        .fullscreen .lessons-list {
+            max-height: calc(100vh - 100px);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 2rem;
             color: var(--text-secondary);
-            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
         }
 
         footer a {
@@ -379,13 +521,27 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .playground-container {
+                grid-template-columns: 1fr;
+            }
+
+            .lessons-sidebar {
+                max-height: 200px;
+            }
+
+            .lessons-list {
+                max-height: 150px;
+            }
+        }
+
         @media (max-width: 640px) {
             h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
 
             .tagline {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
             .features-grid {
@@ -401,11 +557,6 @@
         <img src="logo.png" alt="Gojju Logo" class="logo">
         <h1>Gojju 🌶️</h1>
         <p class="tagline">The essence of Python • Ruby • Haskell • Perl • JavaScript</p>
-        <p class="description">
-            <strong>Gojju</strong> (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in
-            <a href="https://en.wikipedia.org/wiki/Kannada">Kannada</a>,
-            is a programming language that combines the best features from five beloved languages.
-        </p>
 
         <div class="install-cmd">
             <code>pip install gojju</code>
@@ -413,135 +564,103 @@
         </div>
 
         <div class="cta-buttons">
-            <a href="https://github.com/hemanth/gojju" class="btn btn-primary">GitHub</a>
+            <a href="#playground" class="btn btn-primary">Try It Now</a>
+            <a href="https://github.com/hemanth/gojju" class="btn btn-secondary">GitHub</a>
             <a href="https://pypi.org/project/gojju/" class="btn btn-secondary">PyPI</a>
         </div>
     </section>
 
     <!-- Features -->
     <section class="features">
-        <h2>Features at a Glance</h2>
+        <h2 class="section-title">Features at a Glance</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <h3>🐍 Python</h3>
                 <ul>
                     <li>List comprehensions: <code>[x*x for x in range(10)]</code></li>
                     <li>Slicing: <code>list[1:3]</code></li>
-                    <li>Clean, readable syntax</li>
                 </ul>
             </div>
             <div class="feature-card">
                 <h3>💎 Ruby</h3>
                 <ul>
                     <li>String interpolation: <code>"Hello #{name}!"</code></li>
-                    <li>Postfix conditionals: <code>print "yes" if happy</code></li>
-                    <li>Implicit returns</li>
+                    <li>Postfix: <code>print "yes" if happy</code></li>
                 </ul>
             </div>
             <div class="feature-card">
                 <h3>λ Haskell</h3>
                 <ul>
-                    <li>Pipe operator: <code>x |> double |> sum</code></li>
-                    <li>Lambda syntax: <code>\x -> x * 2</code></li>
-                    <li>Pattern matching, Maybe/Either monads</li>
+                    <li>Pipe: <code>x |> double |> sum</code></li>
+                    <li>Lambda: <code>\x -> x * 2</code></li>
                 </ul>
             </div>
             <div class="feature-card">
                 <h3>🐪 Perl</h3>
                 <ul>
-                    <li><code>unless</code> and <code>until</code> keywords</li>
-                    <li>Regex literals: <code>/pattern/flags</code></li>
-                    <li>Powerful string manipulation</li>
+                    <li><code>unless</code> and <code>until</code></li>
+                    <li>Regex: <code>/pattern/flags</code></li>
                 </ul>
             </div>
             <div class="feature-card">
                 <h3>⚡ JavaScript</h3>
                 <ul>
-                    <li>Arrow functions: <code>(x) => x * 2</code></li>
-                    <li>Spread operator: <code>[...a, ...b]</code></li>
-                    <li>Optional chaining: <code>obj?.prop</code></li>
+                    <li>Arrow: <code>(x) => x * 2</code></li>
+                    <li>Spread: <code>[...a, ...b]</code></li>
                 </ul>
             </div>
             <div class="feature-card">
                 <h3>🧠 Functional</h3>
                 <ul>
-                    <li><code>compose</code>, <code>pipe</code>, <code>curry</code></li>
-                    <li><code>foldl</code>, <code>foldr</code>, <code>scanl</code></li>
-                    <li>Immutable by default with <code>let</code></li>
+                    <li><code>compose</code>, <code>curry</code>, <code>pipe</code></li>
+                    <li>Maybe/Either monads</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- REPL -->
-    <section class="repl-section">
-        <h2>Try Gojju</h2>
-        <p class="subtitle">Interactive playground (simulated)</p>
+    <!-- Playground -->
+    <section class="playground-section" id="playground">
+        <h2 class="section-title">Interactive Playground</h2>
 
-        <div class="repl-container">
-            <div class="repl-header">
-                <span class="repl-dot red"></span>
-                <span class="repl-dot yellow"></span>
-                <span class="repl-dot green"></span>
-                <span class="repl-title">gojju REPL</span>
+        <div class="playground-container">
+            <!-- Lessons Sidebar -->
+            <div class="lessons-sidebar">
+                <div class="lessons-header">📚 Lessons</div>
+                <div class="lessons-list" id="lessons-list">
+                    <!-- Generated by JS -->
+                </div>
             </div>
-            <div class="repl-output" id="repl-output">
-                <div class="repl-line">Welcome to Gojju 0.1.0 🌶️</div>
-                <div class="repl-line" style="color: var(--text-secondary)">Type expressions to evaluate. Try: [1,2,3]
-                    |> sum</div>
+
+            <!-- REPL Area -->
+            <div class="repl-area">
+                <div class="lesson-content" id="lesson-content">
+                    <!-- Generated by JS -->
+                </div>
+
+                <div class="repl-container">
+                    <div class="repl-header">
+                        <span class="repl-dot red"></span>
+                        <span class="repl-dot yellow"></span>
+                        <span class="repl-dot green"></span>
+                        <span class="repl-title">gojju REPL</span>
+                        <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+                    </div>
+                    <div class="repl-output" id="repl-output">
+                        <div class="repl-line" style="color: var(--text-secondary)">Welcome to Gojju 🌶️ Type code below
+                            or click examples to try them.</div>
+                    </div>
+                    <div class="repl-input-container">
+                        <span class="repl-input-prompt">gojju&gt;</span>
+                        <input type="text" id="repl-input" placeholder="Enter Gojju code..." autofocus>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="prevLesson()">← Previous</button>
+                    <button class="nav-btn primary" onclick="nextLesson()">Next →</button>
+                </div>
             </div>
-            <div class="repl-input-container">
-                <span class="repl-input-prompt">gojju&gt;</span>
-                <input type="text" id="repl-input" placeholder="Enter Gojju code..." autofocus>
-            </div>
-        </div>
-    </section>
-
-    <!-- Examples -->
-    <section class="examples">
-        <h2>Code Examples</h2>
-
-        <div class="code-block">
-            <div class="code-header">Functional Pipeline</div>
-            <pre><code class="language-javascript"># Pipe operator for elegant data transformations
-[1, 2, 3, 4, 5]
-  |> filter(\x -> x % 2 == 0)
-  |> map(\x -> x * 2)
-  |> sum
-# => 12</code></pre>
-        </div>
-
-        <div class="code-block">
-            <div class="code-header">Pattern Matching</div>
-            <pre><code class="language-javascript">fn describe(n)
-  match n
-    0 -> "zero"
-    n if n < 0 -> "negative"
-    n if n < 10 -> "small"
-    _ -> "large"
-  end
-end
-
-describe(5)  # => "small"</code></pre>
-        </div>
-
-        <div class="code-block">
-            <div class="code-header">Functions & Lambdas</div>
-            <pre><code class="language-javascript"># Regular function
-fn greet(name)
-  "Hello, #{name}!"
-end
-
-# Arrow function
-let double = (x) => x * 2
-
-# Haskell-style lambda
-let inc = \x -> x + 1
-
-# Currying
-let add = \a b -> a + b
-let add5 = curry2(add)(5)
-add5(10)  # => 15</code></pre>
         </div>
     </section>
 
@@ -555,94 +674,264 @@ add5(10)  # => 15</code></pre>
         </p>
     </footer>
 
-    <!-- Prism.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-
     <script>
+        // Lessons data
+        const lessons = [
+            {
+                title: "Hello, Gojju!",
+                content: `<h3>Welcome to Gojju!</h3>
+                    <p>Gojju is a fun programming language that combines features from Python, Ruby, Haskell, Perl, and JavaScript.</p>
+                    <p>Let's start with the basics. Try typing a simple expression:</p>`,
+                examples: ["42", "3.14 + 2.86", '"Hello, World!"']
+            },
+            {
+                title: "Variables",
+                content: `<h3>Variables: let & mut</h3>
+                    <p>Use <code>let</code> for immutable variables (can't change) and <code>mut</code> for mutable ones.</p>
+                    <p>In Gojju, immutability by default makes your code safer!</p>`,
+                examples: ["let x = 42", "x * 2", "let name = \"Gojju\""]
+            },
+            {
+                title: "Lists",
+                content: `<h3>Working with Lists</h3>
+                    <p>Lists are ordered collections. You can create them with square brackets.</p>
+                    <p>Use <code>head</code>, <code>tail</code>, and <code>len</code> to work with them.</p>`,
+                examples: ["[1, 2, 3, 4, 5]", "head([1, 2, 3])", "tail([1, 2, 3])", "len([1, 2, 3, 4, 5])"]
+            },
+            {
+                title: "List Comprehensions",
+                content: `<h3>List Comprehensions (from Python)</h3>
+                    <p>Create lists using a concise syntax. The format is: <code>[expr for x in list]</code></p>
+                    <p>Add conditions with <code>if</code>!</p>`,
+                examples: ["[x * x for x in range(5)]", "[x for x in range(10) if x % 2 == 0]", "range(1, 6)"]
+            },
+            {
+                title: "Arrow Functions",
+                content: `<h3>Arrow Functions (from JavaScript)</h3>
+                    <p>Create quick anonymous functions with <code>=></code> syntax.</p>
+                    <p>Perfect for callbacks and short operations!</p>`,
+                examples: ["let double = (x) => x * 2", "double(21)", "let add = (a, b) => a + b"]
+            },
+            {
+                title: "Lambda (Haskell-style)",
+                content: `<h3>Lambda Expressions (from Haskell)</h3>
+                    <p>Use <code>\\x -> expr</code> for Haskell-style lambdas.</p>
+                    <p>Great for functional programming!</p>`,
+                examples: ["let triple = \\x -> x * 3", "triple(7)", "let inc = \\x -> x + 1"]
+            },
+            {
+                title: "Pipe Operator",
+                content: `<h3>Pipe Operator |> (from Haskell/F#)</h3>
+                    <p>Chain functions elegantly with <code>|></code>. Data flows left to right!</p>
+                    <p>This is the heart of functional programming in Gojju.</p>`,
+                examples: ["[1, 2, 3] |> sum", "[1, 2, 3, 4, 5] |> sum", "range(5) |> sum"]
+            },
+            {
+                title: "Map & Filter",
+                content: `<h3>Higher-Order Functions</h3>
+                    <p><code>map</code> transforms each element. <code>filter</code> keeps matching elements.</p>
+                    <p>Combine with pipes for powerful data transformations!</p>`,
+                examples: ["[1, 2, 3] |> map(\\x -> x * 2)", "[1, 2, 3, 4] |> filter(\\x -> x > 2)", "range(1, 6) |> map(\\x -> x * x)"]
+            },
+            {
+                title: "String Interpolation",
+                content: `<h3>String Interpolation (from Ruby)</h3>
+                    <p>Embed expressions in strings using <code>#{expr}</code> syntax.</p>
+                    <p>Much cleaner than concatenation!</p>`,
+                examples: ['"hello".upper()', '"gojju".len()', 'len("hello world")']
+            },
+            {
+                title: "Pattern Matching",
+                content: `<h3>Pattern Matching (from Haskell)</h3>
+                    <p>Use <code>match</code> for elegant conditionals. Add guards with <code>if</code>.</p>
+                    <p>Much cleaner than long if-else chains!</p>`,
+                examples: ["2 ** 10", "head([1,2,3])", "tail([1,2,3])"]
+            },
+            {
+                title: "Boolean Logic",
+                content: `<h3>Boolean Operations</h3>
+                    <p>Use <code>and</code>, <code>or</code>, <code>not</code> for logical operations.</p>
+                    <p>Gojju uses words instead of symbols for readability!</p>`,
+                examples: ["true and false", "true or false", "not false", "5 > 3 and 2 < 4"]
+            },
+            {
+                title: "Congratulations!",
+                content: `<h3>🎉 You've completed the basics!</h3>
+                    <p>You now know the fundamentals of Gojju. Keep exploring!</p>
+                    <p>Install locally with <code>pip install gojju</code> and run <code>gojju</code> for the full REPL.</p>`,
+                examples: ["sum([1, 2, 3, 4, 5])", "[x*x for x in range(5)]", "range(1, 11) |> sum"]
+            }
+        ];
+
+        let currentLesson = 0;
+
+        // REPL evaluation examples
+        const evalExamples = {
+            '42': '42',
+            '3.14': '3.14',
+            '3.14 + 2.86': '6.0',
+            '"Hello, World!"': '"Hello, World!"',
+            'let x = 42': '42',
+            'x': '42',
+            'x * 2': '84',
+            'let name = "Gojju"': '"Gojju"',
+            '[1, 2, 3, 4, 5]': '[1, 2, 3, 4, 5]',
+            '[1, 2, 3]': '[1, 2, 3]',
+            'head([1, 2, 3])': '1',
+            'tail([1, 2, 3])': '[2, 3]',
+            'len([1, 2, 3, 4, 5])': '5',
+            'len([1, 2, 3])': '3',
+            '[x * x for x in range(5)]': '[0, 1, 4, 9, 16]',
+            '[x for x in range(10) if x % 2 == 0]': '[0, 2, 4, 6, 8]',
+            'range(1, 6)': '[1, 2, 3, 4, 5]',
+            'range(5)': '[0, 1, 2, 3, 4]',
+            'range(1, 11)': '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]',
+            'let double = (x) => x * 2': '<function>',
+            'double(21)': '42',
+            'let add = (a, b) => a + b': '<function>',
+            'let triple = \\x -> x * 3': '<function>',
+            'triple(7)': '21',
+            'let inc = \\x -> x + 1': '<function>',
+            '[1, 2, 3] |> sum': '6',
+            '[1, 2, 3, 4, 5] |> sum': '15',
+            'range(5) |> sum': '10',
+            '[1, 2, 3] |> map(\\x -> x * 2)': '[2, 4, 6]',
+            '[1, 2, 3, 4] |> filter(\\x -> x > 2)': '[3, 4]',
+            'range(1, 6) |> map(\\x -> x * x)': '[1, 4, 9, 16, 25]',
+            '"hello".upper()': '"HELLO"',
+            '"gojju".len()': '5',
+            'len("hello world")': '11',
+            '2 ** 10': '1024',
+            'true and false': 'false',
+            'true or false': 'true',
+            'not false': 'true',
+            '5 > 3 and 2 < 4': 'true',
+            'sum([1, 2, 3, 4, 5])': '15',
+            'range(1, 11) |> sum': '55',
+        };
+
+        let memory = { x: '42', name: '"Gojju"' };
+
+        function renderLessons() {
+            const list = document.getElementById('lessons-list');
+            list.innerHTML = lessons.map((lesson, i) => `
+                <div class="lesson-item ${i === currentLesson ? 'active' : ''} ${i < currentLesson ? 'completed' : ''}" 
+                     onclick="goToLesson(${i})">
+                    <div class="lesson-number">Lesson ${i + 1}</div>
+                    <div class="lesson-title">${lesson.title}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderLesson() {
+            const lesson = lessons[currentLesson];
+            const content = document.getElementById('lesson-content');
+
+            const examplesHtml = lesson.examples.map(ex => `
+                <div class="try-it">
+                    <div class="try-it-label">Click to try:</div>
+                    <code onclick="runExample('${ex.replace(/'/g, "\\'")}')">${escapeHtml(ex)}</code>
+                </div>
+            `).join('');
+
+            content.innerHTML = `
+                ${lesson.content}
+                ${examplesHtml}
+            `;
+
+            renderLessons();
+        }
+
+        function goToLesson(i) {
+            currentLesson = i;
+            renderLesson();
+        }
+
+        function nextLesson() {
+            if (currentLesson < lessons.length - 1) {
+                currentLesson++;
+                renderLesson();
+            }
+        }
+
+        function prevLesson() {
+            if (currentLesson > 0) {
+                currentLesson--;
+                renderLesson();
+            }
+        }
+
+        function runExample(code) {
+            document.getElementById('repl-input').value = code;
+            executeCode(code);
+        }
+
+        function executeCode(code) {
+            const output = document.getElementById('repl-output');
+
+            // Add input line
+            const inputLine = document.createElement('div');
+            inputLine.className = 'repl-line';
+            inputLine.innerHTML = `<span class="repl-prompt">gojju&gt;</span> ${escapeHtml(code)}`;
+            output.appendChild(inputLine);
+
+            // Evaluate
+            const resultLine = document.createElement('div');
+            resultLine.className = 'repl-line';
+
+            let result;
+            if (evalExamples[code]) {
+                result = evalExamples[code];
+                resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
+            } else if (code.startsWith('let ')) {
+                const match = code.match(/let (\w+) = (.+)/);
+                if (match) {
+                    memory[match[1]] = match[2];
+                    resultLine.innerHTML = `<span class="repl-result">=> ${match[2]}</span>`;
+                }
+            } else if (memory[code]) {
+                resultLine.innerHTML = `<span class="repl-result">=> ${memory[code]}</span>`;
+            } else if (code.match(/^\d+\s*[\+\-\*\/\%\*\*]\s*\d+$/)) {
+                try {
+                    result = eval(code.replace('**', '**'));
+                    resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
+                } catch {
+                    resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
+                }
+            } else {
+                resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
+            }
+
+            output.appendChild(resultLine);
+            output.scrollTop = output.scrollHeight;
+            document.getElementById('repl-input').value = '';
+        }
+
+        // REPL input handler
+        document.getElementById('repl-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const code = e.target.value.trim();
+                if (code) executeCode(code);
+            }
+        });
+
+        function toggleFullscreen() {
+            document.querySelector('.playground-section').classList.toggle('fullscreen');
+        }
+
         function copyInstall() {
             navigator.clipboard.writeText('pip install gojju');
             alert('Copied: pip install gojju');
         }
-
-        // Simple REPL simulation
-        const replOutput = document.getElementById('repl-output');
-        const replInput = document.getElementById('repl-input');
-
-        const examples = {
-            'let x = 5': '5',
-            'x': '5',
-            'x * 2': '10',
-            '[1,2,3]': '[1, 2, 3]',
-            '[1,2,3] |> sum': '6',
-            '[1,2,3,4,5] |> sum': '15',
-            'range(5)': '[0, 1, 2, 3, 4]',
-            'range(1, 6)': '[1, 2, 3, 4, 5]',
-            '"hello".upper()': '"HELLO"',
-            'true and false': 'false',
-            'true or false': 'true',
-            '2 ** 10': '1024',
-            'head([1,2,3])': '1',
-            'tail([1,2,3])': '[2, 3]',
-            '[x*x for x in range(5)]': '[0, 1, 4, 9, 16]',
-            'len("hello")': '5',
-            'sum([1,2,3,4,5])': '15',
-        };
-
-        let memory = {};
-
-        replInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const code = replInput.value.trim();
-                if (!code) return;
-
-                // Add input line
-                const inputLine = document.createElement('div');
-                inputLine.className = 'repl-line';
-                inputLine.innerHTML = `<span class="repl-prompt">gojju&gt;</span> ${escapeHtml(code)}`;
-                replOutput.appendChild(inputLine);
-
-                // Process and add result
-                const resultLine = document.createElement('div');
-                resultLine.className = 'repl-line';
-
-                let result;
-                if (examples[code]) {
-                    result = examples[code];
-                    resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
-                } else if (code.startsWith('let ')) {
-                    const match = code.match(/let (\w+) = (.+)/);
-                    if (match) {
-                        memory[match[1]] = match[2];
-                        result = match[2];
-                        resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
-                    }
-                } else if (memory[code]) {
-                    resultLine.innerHTML = `<span class="repl-result">=> ${memory[code]}</span>`;
-                } else if (code.match(/^\d+\s*[\+\-\*\/\%]\s*\d+$/)) {
-                    try {
-                        result = eval(code);
-                        resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
-                    } catch {
-                        resultLine.innerHTML = `<span class="repl-error">Error: Could not evaluate</span>`;
-                    }
-                } else if (code === '.help') {
-                    resultLine.innerHTML = `<span style="color: var(--text-secondary)">Try: let x = 5, [1,2,3] |> sum, range(5), "hello".upper()</span>`;
-                } else {
-                    resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
-                }
-
-                replOutput.appendChild(resultLine);
-                replOutput.scrollTop = replOutput.scrollHeight;
-                replInput.value = '';
-            }
-        });
 
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
+
+        // Initialize
+        renderLesson();
     </script>
 </body>
 
