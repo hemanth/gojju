@@ -787,6 +787,13 @@
                 examples: ["id(42)", "const(5)(99)", "flip(pow)(2, 3)"]
             },
             {
+                title: "Compose & Partial",
+                content: `<h3>Function Composition</h3>
+                    <p><code>compose(f, g)</code> creates f(g(x)). <code>partial(f, a)</code> pre-fills the first argument.</p>
+                    <p>Build complex functions from simple ones!</p>`,
+                examples: ["abs(-5)", "sqrt(16)", "pow(2, 10)"]
+            },
+            {
                 title: "String Interpolation",
                 content: `<h3>String Interpolation (from Ruby)</h3>
                     <p>Embed expressions in strings using <code>#{expr}</code> syntax.</p>
@@ -904,6 +911,9 @@
             'id(42)': '42',
             'const(5)(99)': '5',
             'flip(pow)(2, 3)': '9',
+            'abs(-5)': '5',
+            'sqrt(16)': '4.0',
+            'pow(2, 10)': '1024',
         };
 
         let memory = { x: '42', name: '"Gojju"' };

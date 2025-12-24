@@ -270,6 +270,23 @@ class Interpreter:
             'sum': lambda: sum(lst),
             'min': lambda: min(lst) if lst else None,
             'max': lambda: max(lst) if lst else None,
+            # Ruby/JS inspired additions
+            'sample': lambda: __import__('random').choice(lst) if lst else None,
+            'shuffle': lambda: __import__('random').sample(lst, len(lst)),
+            'count': lambda: lst.count(args[0]) if args else len(lst),
+            'partition': lambda: [[x for x in lst if self._call_function(args[0], [x])], 
+                                  [x for x in lst if not self._call_function(args[0], [x])]] if args else [lst, []],
+            'rotate': lambda: lst[args[0]:] + lst[:args[0]] if args else lst[1:] + lst[:1] if lst else [],
+            'slice': lambda: lst[args[0]:args[1]] if len(args) >= 2 else lst[args[0]:] if args else lst,
+            'fill': lambda: [args[0]] * len(lst) if args else lst,
+            'zip': lambda: [[lst[i], args[0][i] if i < len(args[0]) else None] for i in range(len(lst))] if args else lst,
+            'product': lambda: __import__('functools').reduce(lambda a, b: a * b, lst, 1),
+            'average': lambda: sum(lst) / len(lst) if lst else None,
+            'none?': lambda: not any(self._call_function(args[0], [x]) for x in lst) if args else not any(lst),
+            'one?': lambda: sum(1 for x in lst if self._call_function(args[0], [x])) == 1 if args else sum(1 for x in lst if x) == 1,
+            'group_by': lambda: self._group_by(lst, args[0]) if args else {},
+            'frequencies': lambda: {x: lst.count(x) for x in set(lst)},
+            'tally': lambda: {x: lst.count(x) for x in set(lst)},
         }
         
         if method in methods:
@@ -303,6 +320,31 @@ class Interpreter:
             'match': lambda: bool(re.search(args[0], s)) if args else False,
             'sub': lambda: re.sub(args[0], args[1], s, count=1) if len(args) >= 2 else s,
             'gsub': lambda: re.sub(args[0], args[1], s) if len(args) >= 2 else s,
+            # Ruby/JS inspired additions
+            'center': lambda: s.center(args[0], args[1] if len(args) > 1 else ' ') if args else s,
+            'ljust': lambda: s.ljust(args[0], args[1] if len(args) > 1 else ' ') if args else s,
+            'rjust': lambda: s.rjust(args[0], args[1] if len(args) > 1 else ' ') if args else s,
+            'chomp': lambda: s.rstrip('\n\r'),
+            'chop': lambda: s[:-1] if s else '',
+            'squeeze': lambda: re.sub(r'(.)\1+', r'\1', s),
+            'swapcase': lambda: s.swapcase(),
+            'title': lambda: s.title(),
+            'count': lambda: s.count(args[0]) if args else len(s),
+            'scan': lambda: re.findall(args[0], s) if args else [],
+            'bytes': lambda: [ord(c) for c in s],
+            'ord': lambda: ord(s[0]) if s else None,
+            'succ': lambda: chr(ord(s[-1]) + 1) if s else '',
+            'each_char': lambda: list(s),
+            'delete': lambda: ''.join(c for c in s if c not in (args[0] if args else '')) if args else s,
+            'tr': lambda: s.translate(str.maketrans(args[0], args[1])) if len(args) >= 2 else s,
+            'insert': lambda: s[:args[0]] + args[1] + s[args[0]:] if len(args) >= 2 else s,
+            'slice': lambda: s[args[0]:args[1]] if len(args) >= 2 else s[args[0]:] if args else s,
+            'padStart': lambda: s.rjust(args[0], args[1] if len(args) > 1 else ' ') if args else s,
+            'padEnd': lambda: s.ljust(args[0], args[1] if len(args) > 1 else ' ') if args else s,
+            'trimStart': lambda: s.lstrip(),
+            'trimEnd': lambda: s.rstrip(),
+            'blank?': lambda: len(s.strip()) == 0,
+            'present?': lambda: len(s.strip()) > 0,
         }
         
         if method in methods:
@@ -363,6 +405,16 @@ class Interpreter:
                 result.extend(item)
             else:
                 result.append(item)
+        return result
+    
+    def _group_by(self, lst: list, func) -> dict:
+        """Group list elements by function result."""
+        result = {}
+        for item in lst:
+            key = self._call_function(func, [item])
+            if key not in result:
+                result[key] = []
+            result[key].append(item)
         return result
     
     def _call_function(self, callee: Any, args: list) -> Any:
