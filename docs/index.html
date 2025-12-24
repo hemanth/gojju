@@ -794,11 +794,11 @@
                 examples: ["[1,2,3,4,5] |> filter(\\x -> x > 2) |> sum", "range(1, 6) |> map(\\x -> x * x)", "[1,2,3] |> reverse"]
             },
             {
-                title: "Maybe & Either",
-                content: `<h3>Monads for Safe Code</h3>
-                    <p><code>Just(x)</code> wraps a value, <code>Nothing()</code> represents absence.</p>
-                    <p>Use <code>head</code>/<code>tail</code> for safe list access!</p>`,
-                examples: ["head([])", "head([1,2,3])", "tail([1])", "last([1,2,3])"]
+                title: "Reduce & Fold",
+                content: `<h3>Reducing Lists</h3>
+                    <p><code>reduce(fn, list)</code> combines all elements into a single value.</p>
+                    <p>Great for sums, products, or building complex results!</p>`,
+                examples: ["sum([1, 2, 3, 4, 5])", "product([1, 2, 3, 4])", "[1, 2, 3] |> reverse", "unique([1, 2, 2, 3, 3])"]
             },
             {
                 title: "Boolean Logic",
@@ -873,6 +873,9 @@
             'last([1,2,3])': '3',
             'tail([1])': '[]',
             'sum([1, 2, 3, 4, 5])': '15',
+            'product([1, 2, 3, 4])': '24',
+            'unique([1, 2, 2, 3, 3])': '[1, 2, 3]',
+            '[1, 2, 3] |> reverse': '[3, 2, 1]',
             'range(1, 11) |> sum': '55',
         };
 
