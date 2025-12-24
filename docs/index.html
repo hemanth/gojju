@@ -863,10 +863,10 @@
             const lesson = lessons[currentLesson];
             const content = document.getElementById('lesson-content');
 
-            const examplesHtml = lesson.examples.map(ex => `
+            const examplesHtml = lesson.examples.map((ex, idx) => `
                 <div class="try-it">
                     <div class="try-it-label">Click to try:</div>
-                    <code onclick="runExample('${ex.replace(/'/g, "\\'")}')">${escapeHtml(ex)}</code>
+                    <code class="example-code" data-lesson="${currentLesson}" data-idx="${idx}">${escapeHtml(ex)}</code>
                 </div>
             `).join('');
 
@@ -874,6 +874,16 @@
                 ${lesson.content}
                 ${examplesHtml}
             `;
+
+            // Attach click handlers after rendering
+            document.querySelectorAll('.example-code').forEach(el => {
+                el.addEventListener('click', () => {
+                    const lessonIdx = parseInt(el.dataset.lesson);
+                    const exampleIdx = parseInt(el.dataset.idx);
+                    const code = lessons[lessonIdx].examples[exampleIdx];
+                    runExample(code);
+                });
+            });
 
             renderLessons();
         }
