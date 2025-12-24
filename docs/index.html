@@ -1044,7 +1044,7 @@
                 await pyodide.loadPackage('micropip');
                 await pyodide.runPythonAsync(`
 import micropip
-await micropip.install('gojju==0.1.3')
+await micropip.install('gojju')
 from gojju import Interpreter, Lexer, Parser, __version__
 print(f"Gojju {__version__} loaded!")
 # Create a persistent interpreter instance for REPL state
