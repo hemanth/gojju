@@ -1045,7 +1045,9 @@
                 await pyodide.runPythonAsync(`
 import micropip
 await micropip.install('gojju')
-from gojju import run
+from gojju import Interpreter, Lexer, Parser
+# Create a persistent interpreter instance for REPL state
+_repl_interpreter = Interpreter()
 print("Gojju loaded!")
 `);
 
@@ -1087,11 +1089,15 @@ print("Gojju loaded!")
                 // Escape the code for Python string
                 const escapedCode = code.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
-                // Run with proper result capture
+                // Run with persistent interpreter for state
                 await pyodide.runPythonAsync(`
 _gojju_code = '''${escapedCode}'''
 try:
-    _gojju_result = run(_gojju_code)
+    _lexer = Lexer(_gojju_code)
+    _tokens = _lexer.tokenize()
+    _parser = Parser(_tokens)
+    _ast = _parser.parse()
+    _gojju_result = _repl_interpreter.execute(_ast)
     if _gojju_result is None:
         _gojju_output = "nil"
     else:
