@@ -524,14 +524,37 @@
         @media (max-width: 900px) {
             .playground-container {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .lessons-sidebar {
-                max-height: 200px;
+                order: 2;
+            }
+
+            .repl-area {
+                order: 1;
             }
 
             .lessons-list {
-                max-height: 150px;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                max-height: none;
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+
+            .lesson-item {
+                flex-shrink: 0;
+                min-width: 120px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                text-align: center;
+            }
+
+            .lesson-item.completed {
+                border-left: 1px solid var(--border);
+                border-top: 3px solid var(--success);
             }
         }
 
@@ -546,6 +569,19 @@
 
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .lesson-item {
+                min-width: 100px;
+                padding: 0.5rem;
+            }
+
+            .lesson-number {
+                font-size: 0.65rem;
+            }
+
+            .lesson-title {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -652,7 +688,7 @@
                     </div>
                     <div class="repl-input-container">
                         <span class="repl-input-prompt">gojju&gt;</span>
-                        <input type="text" id="repl-input" placeholder="Enter Gojju code..." autofocus>
+                        <input type="text" id="repl-input" placeholder="Enter Gojju code...">
                     </div>
                 </div>
 
