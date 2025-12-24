@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gojju API Reference</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --fg: #c9d1d9;
+            --accent: #ff6b35;
+            --accent2: #f7c873;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --success: #3fb950;
+            --code-bg: #1f2428;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        h1 a:hover {
+            text-decoration: underline;
+        }
+
+        .subtitle {
+            color: var(--accent2);
+            font-size: 1.2rem;
+        }
+
+        nav {
+            margin: 1.5rem 0;
+        }
+
+        nav a {
+            color: var(--accent);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: var(--accent2);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .category {
+            margin-bottom: 3rem;
+        }
+
+        .function {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .function-name {
+            color: var(--success);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .function-sig {
+            color: var(--accent2);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .function-desc {
+            margin-top: 0.5rem;
+            color: #8b949e;
+        }
+
+        .function-example {
+            background: var(--code-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: var(--fg);
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            color: #8b949e;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Playground</a>
+
+        <header>
+            <h1><a href="index.html">Gojju 🌶️</a> API Reference</h1>
+            <p class="subtitle">All built-in functions and methods</p>
+            <nav>
+                <a href="#io">I/O</a>
+                <a href="#list">List</a>
+                <a href="#string">String</a>
+                <a href="#math">Math</a>
+                <a href="#ho">Higher-Order</a>
+                <a href="#type">Type</a>
+                <a href="#fp">FP Utilities</a>
+            </nav>
+        </header>
+
+        <section id="io" class="category">
+            <h2>I/O Functions</h2>
+            <div class="function">
+                <span class="function-name">print</span><span class="function-sig">(...args)</span>
+                <p class="function-desc">Print values to stdout.</p>
+                <div class="function-example">print("Hello", "World") → Hello World</div>
+            </div>
+            <div class="function">
+                <span class="function-name">puts</span><span class="function-sig">(...args)</span>
+                <p class="function-desc">Print values with newlines (Ruby-style).</p>
+                <div class="function-example">puts("line1", "line2")</div>
+            </div>
+            <div class="function">
+                <span class="function-name">gets</span><span class="function-sig">()</span>
+                <p class="function-desc">Read a line from stdin.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">input</span><span class="function-sig">(prompt="")</span>
+                <p class="function-desc">Read input with an optional prompt.</p>
+            </div>
+        </section>
+
+        <section id="list" class="category">
+            <h2>List Functions</h2>
+            <div class="function">
+                <span class="function-name">head</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Get the first element of a list.</p>
+                <div class="function-example">head([1, 2, 3]) → 1</div>
+            </div>
+            <div class="function">
+                <span class="function-name">tail</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Get all but the first element of a list.</p>
+                <div class="function-example">tail([1, 2, 3]) → [2, 3]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">last</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Get the last element of a list.</p>
+                <div class="function-example">last([1, 2, 3]) → 3</div>
+            </div>
+            <div class="function">
+                <span class="function-name">init</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Get all but the last element.</p>
+                <div class="function-example">init([1, 2, 3]) → [1, 2]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">len</span><span class="function-sig">(obj)</span>
+                <p class="function-desc">Get the length of a list or string.</p>
+                <div class="function-example">len([1, 2, 3]) → 3</div>
+            </div>
+            <div class="function">
+                <span class="function-name">push</span><span class="function-sig">(list, item)</span>
+                <p class="function-desc">Add an item to the end of a list (mutating).</p>
+            </div>
+            <div class="function">
+                <span class="function-name">pop</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Remove and return the last item.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">concat</span><span class="function-sig">(...lists)</span>
+                <p class="function-desc">Concatenate multiple lists.</p>
+                <div class="function-example">concat([1, 2], [3, 4]) → [1, 2, 3, 4]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">reverse</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Reverse a list.</p>
+                <div class="function-example">reverse([1, 2, 3]) → [3, 2, 1]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">sort</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Sort a list.</p>
+                <div class="function-example">sort([3, 1, 2]) → [1, 2, 3]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">unique</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Remove duplicates from a list.</p>
+                <div class="function-example">unique([1, 1, 2, 2, 3]) → [1, 2, 3]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">flatten</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Flatten a nested list by one level.</p>
+                <div class="function-example">flatten([[1, 2], [3, 4]]) → [1, 2, 3, 4]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">zip</span><span class="function-sig">(...lists)</span>
+                <p class="function-desc">Zip multiple lists together.</p>
+                <div class="function-example">zip([1, 2], ["a", "b"]) → [[1, "a"], [2, "b"]]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">enumerate</span><span class="function-sig">(list, start=0)</span>
+                <p class="function-desc">Return list of [index, value] pairs.</p>
+                <div class="function-example">enumerate(["a", "b"]) → [[0, "a"], [1, "b"]]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">range</span><span class="function-sig">(start, end?, step?)</span>
+                <p class="function-desc">Generate a range of numbers.</p>
+                <div class="function-example">range(5) → [0, 1, 2, 3, 4]<br>range(1, 5) → [1, 2, 3, 4]</div>
+            </div>
+        </section>
+
+        <section id="ho" class="category">
+            <h2>Higher-Order Functions</h2>
+            <div class="function">
+                <span class="function-name">map</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Apply a function to each element.</p>
+                <div class="function-example">[1, 2, 3] |> map(\x -> x * 2) → [2, 4, 6]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">filter</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Filter elements by predicate.</p>
+                <div class="function-example">[1, 2, 3, 4] |> filter(\x -> x > 2) → [3, 4]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">reduce</span><span class="function-sig">(func, list, initial?)</span>
+                <p class="function-desc">Reduce a list to a single value.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">each</span><span class="function-sig">(list, func)</span>
+                <p class="function-desc">Iterate over each element (Ruby-style).</p>
+            </div>
+            <div class="function">
+                <span class="function-name">find</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Find the first element matching predicate.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">any</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Check if any element matches predicate.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">all</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Check if all elements match predicate.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">take</span><span class="function-sig">(n, list)</span>
+                <p class="function-desc">Take first n elements.</p>
+                <div class="function-example">take(2, [1, 2, 3, 4]) → [1, 2]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">drop</span><span class="function-sig">(n, list)</span>
+                <p class="function-desc">Drop first n elements.</p>
+                <div class="function-example">drop(2, [1, 2, 3, 4]) → [3, 4]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">takewhile</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Take elements while predicate is true.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">dropwhile</span><span class="function-sig">(func, list)</span>
+                <p class="function-desc">Drop elements while predicate is true.</p>
+            </div>
+        </section>
+
+        <section id="string" class="category">
+            <h2>String Functions</h2>
+            <div class="function">
+                <span class="function-name">split</span><span class="function-sig">(str, sep?)</span>
+                <p class="function-desc">Split a string by separator.</p>
+                <div class="function-example">split("a,b,c", ",") → ["a", "b", "c"]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">join</span><span class="function-sig">(list, sep="")</span>
+                <p class="function-desc">Join a list into a string.</p>
+                <div class="function-example">join(["a", "b"], "-") → "a-b"</div>
+            </div>
+            <div class="function">
+                <span class="function-name">upper</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Convert to uppercase.</p>
+                <div class="function-example">"hello".upper() → "HELLO"</div>
+            </div>
+            <div class="function">
+                <span class="function-name">lower</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Convert to lowercase.</p>
+                <div class="function-example">"HELLO".lower() → "hello"</div>
+            </div>
+            <div class="function">
+                <span class="function-name">capitalize</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Capitalize first letter.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">strip</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Remove leading/trailing whitespace.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">replace</span><span class="function-sig">(str, old, new)</span>
+                <p class="function-desc">Replace occurrences in a string.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">chars</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Split string into characters.</p>
+                <div class="function-example">chars("abc") → ["a", "b", "c"]</div>
+            </div>
+            <div class="function">
+                <span class="function-name">words</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Split string into words.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">lines</span><span class="function-sig">(str)</span>
+                <p class="function-desc">Split string into lines.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">match</span><span class="function-sig">(pattern, str)</span>
+                <p class="function-desc">Match regex pattern against string.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">gsub</span><span class="function-sig">(pattern, replacement, str)</span>
+                <p class="function-desc">Replace all regex matches (global substitution).</p>
+            </div>
+        </section>
+
+        <section id="math" class="category">
+            <h2>Math Functions</h2>
+            <div class="function">
+                <span class="function-name">abs</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Absolute value.</p>
+                <div class="function-example">abs(-5) → 5</div>
+            </div>
+            <div class="function">
+                <span class="function-name">min</span><span class="function-sig">(...args)</span>
+                <p class="function-desc">Minimum value.</p>
+                <div class="function-example">min([5, 2, 8]) → 2</div>
+            </div>
+            <div class="function">
+                <span class="function-name">max</span><span class="function-sig">(...args)</span>
+                <p class="function-desc">Maximum value.</p>
+                <div class="function-example">max([5, 2, 8]) → 8</div>
+            </div>
+            <div class="function">
+                <span class="function-name">sum</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Sum of a list.</p>
+                <div class="function-example">sum([1, 2, 3, 4, 5]) → 15</div>
+            </div>
+            <div class="function">
+                <span class="function-name">product</span><span class="function-sig">(list)</span>
+                <p class="function-desc">Product of a list.</p>
+                <div class="function-example">product([1, 2, 3, 4]) → 24</div>
+            </div>
+            <div class="function">
+                <span class="function-name">sqrt</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Square root.</p>
+                <div class="function-example">sqrt(16) → 4.0</div>
+            </div>
+            <div class="function">
+                <span class="function-name">pow</span><span class="function-sig">(x, y)</span>
+                <p class="function-desc">Power.</p>
+                <div class="function-example">pow(2, 10) → 1024</div>
+            </div>
+            <div class="function">
+                <span class="function-name">floor</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Floor of a number.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">ceil</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Ceiling of a number.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">round</span><span class="function-sig">(x, n=0)</span>
+                <p class="function-desc">Round a number.</p>
+            </div>
+        </section>
+
+        <section id="type" class="category">
+            <h2>Type Functions</h2>
+            <div class="function">
+                <span class="function-name">type</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Get the type of a value.</p>
+                <div class="function-example">type(42) → "integer"<br>type([1,2,3]) → "list"</div>
+            </div>
+            <div class="function">
+                <span class="function-name">int</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Convert to integer.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">float</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Convert to float.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">str</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Convert to string.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">list</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Convert to list.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">bool</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Convert to boolean.</p>
+            </div>
+        </section>
+
+        <section id="fp" class="category">
+            <h2>FP Utilities</h2>
+            <div class="function">
+                <span class="function-name">id</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Identity function - returns x unchanged.</p>
+                <div class="function-example">id(42) → 42</div>
+            </div>
+            <div class="function">
+                <span class="function-name">const</span><span class="function-sig">(x)</span>
+                <p class="function-desc">Create a function that always returns x.</p>
+                <div class="function-example">const(5)(99) → 5</div>
+            </div>
+            <div class="function">
+                <span class="function-name">compose</span><span class="function-sig">(f, g)</span>
+                <p class="function-desc">Compose two functions: compose(f, g)(x) = f(g(x))</p>
+            </div>
+            <div class="function">
+                <span class="function-name">flip</span><span class="function-sig">(f)</span>
+                <p class="function-desc">Flip argument order of a binary function.</p>
+                <div class="function-example">flip(pow)(2, 3) → 9 (= pow(3, 2))</div>
+            </div>
+            <div class="function">
+                <span class="function-name">curry</span><span class="function-sig">(f)</span>
+                <p class="function-desc">Curry a binary function.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">partial</span><span class="function-sig">(f, ...args)</span>
+                <p class="function-desc">Partially apply arguments to a function.</p>
+            </div>
+            <div class="function">
+                <span class="function-name">times</span><span class="function-sig">(n, func)</span>
+                <p class="function-desc">Execute a function n times.</p>
+                <div class="function-example">times(3, \i -> i * 2) → [0, 2, 4]</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with ❤️ and a dash of 🌶️</p>
+            <p>
+                <a href="https://github.com/hemanth/gojju">GitHub</a> •
+                <a href="https://pypi.org/project/gojju/">PyPI</a> •
+                <a href="index.html">Playground</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
