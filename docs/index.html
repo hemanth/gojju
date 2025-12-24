@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gojju - The Essence of Five Languages</title>
+    <meta name="description" content="A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #ff6b35;
+            --accent-light: #ff8c5a;
+            --accent-dark: #e55a2b;
+            --border: #30363d;
+            --success: #3fb950;
+            --code-bg: #1a1f26;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.5rem;
+            border-radius: 24px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .description a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+        
+        /* Install Command */
+        .install-cmd {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--code-bg);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+        
+        .install-cmd code {
+            color: var(--success);
+        }
+        
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+        
+        .copy-btn:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+        
+        .feature-card li {
+            padding: 0.25rem 0;
+        }
+        
+        .feature-card code {
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+        
+        /* REPL Section */
+        .repl-section {
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .repl-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .repl-section .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .repl-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .repl-header {
+            background: var(--bg-tertiary);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .repl-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .repl-dot.red { background: #ff5f56; }
+        .repl-dot.yellow { background: #ffbd2e; }
+        .repl-dot.green { background: #27c93f; }
+        
+        .repl-title {
+            margin-left: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .repl-output {
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .repl-line {
+            margin-bottom: 0.25rem;
+        }
+        
+        .repl-prompt {
+            color: var(--accent);
+        }
+        
+        .repl-result {
+            color: var(--success);
+        }
+        
+        .repl-error {
+            color: #f85149;
+        }
+        
+        .repl-input-container {
+            display: flex;
+            border-top: 1px solid var(--border);
+            background: var(--code-bg);
+        }
+        
+        .repl-input-prompt {
+            padding: 1rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        #repl-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            padding: 1rem 1rem 1rem 0;
+            outline: none;
+        }
+        
+        /* Code Examples */
+        .examples {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .examples h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .code-header {
+            background: var(--bg-tertiary);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .code-block pre {
+            margin: 0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <img src="logo.png" alt="Gojju Logo" class="logo">
+        <h1>Gojju 🌶️</h1>
+        <p class="tagline">The essence of Python • Ruby • Haskell • Perl • JavaScript</p>
+        <p class="description">
+            <strong>Gojju</strong> (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in 
+            <a href="https://en.wikipedia.org/wiki/Kannada">Kannada</a>, 
+            is a programming language that combines the best features from five beloved languages.
+        </p>
+        
+        <div class="install-cmd">
+            <code>pip install gojju</code>
+            <button class="copy-btn" onclick="copyInstall()" title="Copy">📋</button>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="https://github.com/hemanth/gojju" class="btn btn-primary">GitHub</a>
+            <a href="https://pypi.org/project/gojju/" class="btn btn-secondary">PyPI</a>
+        </div>
+    </section>
+    
+    <!-- Features -->
+    <section class="features">
+        <h2>Features at a Glance</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🐍 Python</h3>
+                <ul>
+                    <li>List comprehensions: <code>[x*x for x in range(10)]</code></li>
+                    <li>Slicing: <code>list[1:3]</code></li>
+                    <li>Clean, readable syntax</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>💎 Ruby</h3>
+                <ul>
+                    <li>String interpolation: <code>"Hello #{name}!"</code></li>
+                    <li>Postfix conditionals: <code>print "yes" if happy</code></li>
+                    <li>Implicit returns</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>λ Haskell</h3>
+                <ul>
+                    <li>Pipe operator: <code>x |> double |> sum</code></li>
+                    <li>Lambda syntax: <code>\x -> x * 2</code></li>
+                    <li>Pattern matching, Maybe/Either monads</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🐪 Perl</h3>
+                <ul>
+                    <li><code>unless</code> and <code>until</code> keywords</li>
+                    <li>Regex literals: <code>/pattern/flags</code></li>
+                    <li>Powerful string manipulation</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ JavaScript</h3>
+                <ul>
+                    <li>Arrow functions: <code>(x) => x * 2</code></li>
+                    <li>Spread operator: <code>[...a, ...b]</code></li>
+                    <li>Optional chaining: <code>obj?.prop</code></li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>🧠 Functional</h3>
+                <ul>
+                    <li><code>compose</code>, <code>pipe</code>, <code>curry</code></li>
+                    <li><code>foldl</code>, <code>foldr</code>, <code>scanl</code></li>
+                    <li>Immutable by default with <code>let</code></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- REPL -->
+    <section class="repl-section">
+        <h2>Try Gojju</h2>
+        <p class="subtitle">Interactive playground (simulated)</p>
+        
+        <div class="repl-container">
+            <div class="repl-header">
+                <span class="repl-dot red"></span>
+                <span class="repl-dot yellow"></span>
+                <span class="repl-dot green"></span>
+                <span class="repl-title">gojju REPL</span>
+            </div>
+            <div class="repl-output" id="repl-output">
+                <div class="repl-line">Welcome to Gojju 0.1.0 🌶️</div>
+                <div class="repl-line" style="color: var(--text-secondary)">Type expressions to evaluate. Try: [1,2,3] |> sum</div>
+            </div>
+            <div class="repl-input-container">
+                <span class="repl-input-prompt">gojju&gt;</span>
+                <input type="text" id="repl-input" placeholder="Enter Gojju code..." autofocus>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Examples -->
+    <section class="examples">
+        <h2>Code Examples</h2>
+        
+        <div class="code-block">
+            <div class="code-header">Functional Pipeline</div>
+            <pre><code class="language-javascript"># Pipe operator for elegant data transformations
+[1, 2, 3, 4, 5]
+  |> filter(\x -> x % 2 == 0)
+  |> map(\x -> x * 2)
+  |> sum
+# => 12</code></pre>
+        </div>
+        
+        <div class="code-block">
+            <div class="code-header">Pattern Matching</div>
+            <pre><code class="language-javascript">fn describe(n)
+  match n
+    0 -> "zero"
+    n if n < 0 -> "negative"
+    n if n < 10 -> "small"
+    _ -> "large"
+  end
+end
+
+describe(5)  # => "small"</code></pre>
+        </div>
+        
+        <div class="code-block">
+            <div class="code-header">Functions & Lambdas</div>
+            <pre><code class="language-javascript"># Regular function
+fn greet(name)
+  "Hello, #{name}!"
+end
+
+# Arrow function
+let double = (x) => x * 2
+
+# Haskell-style lambda
+let inc = \x -> x + 1
+
+# Currying
+let add = \a b -> a + b
+let add5 = curry2(add)(5)
+add5(10)  # => 15</code></pre>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ and a dash of 🌶️</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/hemanth/gojju">GitHub</a> • 
+            <a href="https://pypi.org/project/gojju/">PyPI</a> • 
+            <a href="https://github.com/hemanth/gojju/tree/main/examples">Examples</a>
+        </p>
+    </footer>
+    
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+    <script>
+        function copyInstall() {
+            navigator.clipboard.writeText('pip install gojju');
+            alert('Copied: pip install gojju');
+        }
+        
+        // Simple REPL simulation
+        const replOutput = document.getElementById('repl-output');
+        const replInput = document.getElementById('repl-input');
+        
+        const examples = {
+            'let x = 5': '5',
+            'x': '5',
+            'x * 2': '10',
+            '[1,2,3]': '[1, 2, 3]',
+            '[1,2,3] |> sum': '6',
+            '[1,2,3,4,5] |> sum': '15',
+            'range(5)': '[0, 1, 2, 3, 4]',
+            'range(1, 6)': '[1, 2, 3, 4, 5]',
+            '"hello".upper()': '"HELLO"',
+            'true and false': 'false',
+            'true or false': 'true',
+            '2 ** 10': '1024',
+            'head([1,2,3])': '1',
+            'tail([1,2,3])': '[2, 3]',
+            '[x*x for x in range(5)]': '[0, 1, 4, 9, 16]',
+            'len("hello")': '5',
+            'sum([1,2,3,4,5])': '15',
+        };
+        
+        let memory = {};
+        
+        replInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const code = replInput.value.trim();
+                if (!code) return;
+                
+                // Add input line
+                const inputLine = document.createElement('div');
+                inputLine.className = 'repl-line';
+                inputLine.innerHTML = `<span class="repl-prompt">gojju&gt;</span> ${escapeHtml(code)}`;
+                replOutput.appendChild(inputLine);
+                
+                // Process and add result
+                const resultLine = document.createElement('div');
+                resultLine.className = 'repl-line';
+                
+                let result;
+                if (examples[code]) {
+                    result = examples[code];
+                    resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
+                } else if (code.startsWith('let ')) {
+                    const match = code.match(/let (\w+) = (.+)/);
+                    if (match) {
+                        memory[match[1]] = match[2];
+                        result = match[2];
+                        resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
+                    }
+                } else if (memory[code]) {
+                    resultLine.innerHTML = `<span class="repl-result">=> ${memory[code]}</span>`;
+                } else if (code.match(/^\d+\s*[\+\-\*\/\%]\s*\d+$/)) {
+                    try {
+                        result = eval(code);
+                        resultLine.innerHTML = `<span class="repl-result">=> ${result}</span>`;
+                    } catch {
+                        resultLine.innerHTML = `<span class="repl-error">Error: Could not evaluate</span>`;
+                    }
+                } else if (code === '.help') {
+                    resultLine.innerHTML = `<span style="color: var(--text-secondary)">Try: let x = 5, [1,2,3] |> sum, range(5), "hello".upper()</span>`;
+                } else {
+                    resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
+                }
+                
+                replOutput.appendChild(resultLine);
+                replOutput.scrollTop = replOutput.scrollHeight;
+                replInput.value = '';
+            }
+        });
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
