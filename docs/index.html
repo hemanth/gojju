@@ -710,6 +710,9 @@
         </p>
     </footer>
 
+    <!-- Pyodide CDN - Load before main script -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
     <script>
         // Lessons data
         const lessons = [
@@ -1004,8 +1007,104 @@
             return div.innerHTML;
         }
 
-        // Initialize
+        // Initialize lessons
         renderLesson();
+
+        // ============================================================
+        // PYODIDE INTEGRATION - Real Gojju interpreter in browser!
+        // ============================================================
+
+        let pyodide = null;
+        let pyodideReady = false;
+
+        async function initPyodide() {
+            const output = document.getElementById('repl-output');
+
+            // Show loading message
+            const loadingLine = document.createElement('div');
+            loadingLine.className = 'repl-line';
+            loadingLine.id = 'pyodide-loading';
+            loadingLine.innerHTML = '<span style="color: var(--accent)">⏳ Loading Gojju interpreter (first time may take a few seconds)...</span>';
+            output.appendChild(loadingLine);
+
+            try {
+                // Load Pyodide
+                pyodide = await loadPyodide();
+
+                // Install micropip and gojju
+                await pyodide.loadPackage('micropip');
+                await pyodide.runPythonAsync(`
+import micropip
+await micropip.install('gojju')
+from gojju import run
+print("Gojju loaded!")
+`);
+
+                pyodideReady = true;
+
+                // Replace loading message with success
+                document.getElementById('pyodide-loading').innerHTML =
+                    '<span style="color: var(--success)">✓ Gojju interpreter ready! Try: [1, 2, 3] |> sum</span>';
+
+            } catch (error) {
+                console.error('Pyodide error:', error);
+                document.getElementById('pyodide-loading').innerHTML =
+                    `<span style="color: #f85149">⚠️ Could not load interpreter. Using simulation mode.</span>`;
+            }
+        }
+
+        // Override executeCode to use Pyodide when available
+        const originalExecuteCode = executeCode;
+        executeCode = async function (code) {
+            if (!pyodideReady) {
+                // Fall back to simulation
+                originalExecuteCode(code);
+                return;
+            }
+
+            const output = document.getElementById('repl-output');
+
+            // Add input line
+            const inputLine = document.createElement('div');
+            inputLine.className = 'repl-line';
+            inputLine.innerHTML = `<span class="repl-prompt">gojju&gt;</span> ${escapeHtml(code)}`;
+            output.appendChild(inputLine);
+
+            // Evaluate with real Gojju
+            const resultLine = document.createElement('div');
+            resultLine.className = 'repl-line';
+
+            try {
+                // Escape the code for Python string
+                const escapedCode = code.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n');
+
+                const result = await pyodide.runPythonAsync(`
+try:
+    result = run('${escapedCode}')
+    if result is None:
+        "nil"
+    else:
+        repr(result)
+except Exception as e:
+    f"Error: {e}"
+`);
+
+                if (result.startsWith('Error:')) {
+                    resultLine.innerHTML = `<span class="repl-error">${escapeHtml(result)}</span>`;
+                } else {
+                    resultLine.innerHTML = `<span class="repl-result">=> ${escapeHtml(result)}</span>`;
+                }
+            } catch (error) {
+                resultLine.innerHTML = `<span class="repl-error">Error: ${escapeHtml(error.message)}</span>`;
+            }
+
+            output.appendChild(resultLine);
+            output.scrollTop = output.scrollHeight;
+            document.getElementById('repl-input').value = '';
+        };
+
+        // Start loading Pyodide in background
+        initPyodide();
     </script>
 </body>
 
