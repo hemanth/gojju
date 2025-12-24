@@ -780,6 +780,13 @@
                 examples: ["range(1, 10) |> filter(\\x -> x % 2 == 0) |> sum", "[5,3,8,1] |> sort |> reverse", "range(1, 6) |> map(\\x -> x * x) |> sum"]
             },
             {
+                title: "Compose & Curry",
+                content: `<h3>Advanced FP Patterns</h3>
+                    <p><code>compose(f, g)</code> creates a new function: compose(f, g)(x) = f(g(x))</p>
+                    <p><code>curry</code> and <code>partial</code> let you pre-fill function arguments!</p>`,
+                examples: ["id(42)", "const(5)(99)", "flip(pow)(2, 3)"]
+            },
+            {
                 title: "String Interpolation",
                 content: `<h3>String Interpolation (from Ruby)</h3>
                     <p>Embed expressions in strings using <code>#{expr}</code> syntax.</p>
@@ -894,6 +901,9 @@
             'range(1, 10) |> filter(\\x -> x % 2 == 0) |> sum': '20',
             '[5,3,8,1] |> sort |> reverse': '[8, 5, 3, 1]',
             'range(1, 6) |> map(\\x -> x * x) |> sum': '55',
+            'id(42)': '42',
+            'const(5)(99)': '5',
+            'flip(pow)(2, 3)': '9',
         };
 
         let memory = { x: '42', name: '"Gojju"' };
