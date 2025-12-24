@@ -16,7 +16,7 @@
 
 ---
 
-**Gojju** (ಗೊಜ್ಜು) — meaning "essence" or "secret ingredient" in [Kannada](https://en.wikipedia.org/wiki/Kannada) — is a programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript.
+**Gojju** (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in [Kannada](https://en.wikipedia.org/wiki/Kannada), is a programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript.
 
 ## Installation
 

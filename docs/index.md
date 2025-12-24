@@ -5,7 +5,7 @@ title: Gojju - The Essence of Five Languages
 
 # Gojju 🌶️
 
-**Gojju** (ಗೊಜ್ಜು) — meaning "essence" or "secret ingredient" in [Kannada](https://en.wikipedia.org/wiki/Kannada) — is a programming language that combines the best features from Python, Ruby, Haskell, Perl, and JavaScript into one expressive, fun, and functional language.
+**Gojju** (ಗೊಜ್ಜು), meaning "essence" or "secret ingredient" in [Kannada](https://en.wikipedia.org/wiki/Kannada), is a programming language that combines the best features from Python, Ruby, Haskell, Perl, and JavaScript into one expressive, fun, and functional language.
 
 ## Installation
 
