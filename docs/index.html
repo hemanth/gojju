@@ -783,22 +783,22 @@
                 title: "Pattern Matching",
                 content: `<h3>Pattern Matching (from Haskell)</h3>
                     <p>Use <code>match</code> for elegant conditionals. Add guards with <code>if</code>.</p>
-                    <p>Much cleaner than long if-else chains!</p>`,
-                examples: ["2 ** 10", "head([1,2,3])", "tail([1,2,3])"]
+                    <p>Syntax: <code>match value: 0 -> "zero" | n if n < 0 -> "negative" | _ -> "positive" end</code></p>`,
+                examples: ["5 > 3", "10 == 10", "type(42)", "type([1,2,3])"]
             },
             {
                 title: "Compose & Curry",
                 content: `<h3>Function Composition</h3>
-                    <p><code>compose</code> combines functions: compose(f, g)(x) = f(g(x))</p>
-                    <p><code>curry</code> transforms multi-arg functions into chains of single-arg functions.</p>`,
-                examples: ["sum([1, 2, 3, 4, 5])", "[1, 2, 3] |> sum", "range(1, 6) |> sum"]
+                    <p><code>compose(f, g)</code> combines functions so compose(f, g)(x) = f(g(x))</p>
+                    <p>Chain operations elegantly with the pipe operator!</p>`,
+                examples: ["[1,2,3,4,5] |> filter(\\x -> x > 2) |> sum", "range(1, 6) |> map(\\x -> x * x)", "[1,2,3] |> reverse"]
             },
             {
                 title: "Maybe & Either",
                 content: `<h3>Monads for Safe Code</h3>
                     <p><code>Just(x)</code> wraps a value, <code>Nothing()</code> represents absence.</p>
-                    <p><code>Right(x)</code> is success, <code>Left(x)</code> is failure.</p>`,
-                examples: ["range(5)", "[x * x for x in range(5)]", "sum([1, 2, 3, 4, 5])"]
+                    <p>Use <code>head</code>/<code>tail</code> for safe list access!</p>`,
+                examples: ["head([])", "head([1,2,3])", "tail([1])", "last([1,2,3])"]
             },
             {
                 title: "Boolean Logic",
@@ -855,6 +855,8 @@
             '[1, 2, 3] |> map(\\x -> x * 2)': '[2, 4, 6]',
             '[1, 2, 3, 4] |> filter(\\x -> x > 2)': '[3, 4]',
             'range(1, 6) |> map(\\x -> x * x)': '[1, 4, 9, 16, 25]',
+            '[1,2,3,4,5] |> filter(\\x -> x > 2) |> sum': '12',
+            '[1,2,3] |> reverse': '[3, 2, 1]',
             '"hello".upper()': '"HELLO"',
             '"gojju".len()': '5',
             'len("hello world")': '11',
@@ -862,7 +864,14 @@
             'true and false': 'false',
             'true or false': 'true',
             'not false': 'true',
+            '5 > 3': 'true',
+            '10 == 10': 'true',
             '5 > 3 and 2 < 4': 'true',
+            'type(42)': '"integer"',
+            'type([1,2,3])': '"list"',
+            'head([])': 'nil',
+            'last([1,2,3])': '3',
+            'tail([1])': '[]',
             'sum([1, 2, 3, 4, 5])': '15',
             'range(1, 11) |> sum': '55',
         };
