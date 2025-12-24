@@ -10,8 +10,8 @@
 
 <p align="center">
   <a href="https://hemanth.github.io/gojju">Documentation</a> •
-  <a href="https://hemanth.github.io/gojju/examples">Examples</a> •
-  <a href="https://hemanth.github.io/gojju/api">API Reference</a>
+  <a href="https://github.com/hemanth/gojju/tree/main/examples">Examples</a> •
+  <a href="https://pypi.org/project/gojju/">PyPI</a>
 </p>
 
 ---
