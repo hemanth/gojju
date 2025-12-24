@@ -773,6 +773,13 @@
                 examples: ["[1, 2, 3] |> map(\\x -> x * 2)", "[1, 2, 3, 4] |> filter(\\x -> x > 2)", "range(1, 6) |> map(\\x -> x * x)"]
             },
             {
+                title: "FP Pipelines",
+                content: `<h3>Chain It All Together!</h3>
+                    <p>The real power of FP: chain multiple operations into readable pipelines.</p>
+                    <p>Each step flows naturally into the next!</p>`,
+                examples: ["range(1, 10) |> filter(\\x -> x % 2 == 0) |> sum", "[5,3,8,1] |> sort |> reverse", "range(1, 6) |> map(\\x -> x * x) |> sum"]
+            },
+            {
                 title: "String Interpolation",
                 content: `<h3>String Interpolation (from Ruby)</h3>
                     <p>Embed expressions in strings using <code>#{expr}</code> syntax.</p>
@@ -884,6 +891,9 @@
             'min([5, 2, 8, 1])': '1',
             'max([5, 2, 8, 1])': '8',
             'range(1, 11) |> sum': '55',
+            'range(1, 10) |> filter(\\x -> x % 2 == 0) |> sum': '20',
+            '[5,3,8,1] |> sort |> reverse': '[8, 5, 3, 1]',
+            'range(1, 6) |> map(\\x -> x * x) |> sum': '55',
         };
 
         let memory = { x: '42', name: '"Gojju"' };
