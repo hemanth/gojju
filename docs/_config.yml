@@ -1,0 +1,14 @@
+remote_theme: pages-themes/minimal@v0.2.0
+title: Gojju
+description: A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript
+plugins:
+  - jekyll-remote-theme
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
