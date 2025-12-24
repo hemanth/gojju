@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gojju"
-version = "0.1.1"
+version = "0.1.2"
 description = "A programming language combining the best of Python, Ruby, Haskell, Perl, and JavaScript"
 readme = "README.md"
 license = {text = "MIT"}

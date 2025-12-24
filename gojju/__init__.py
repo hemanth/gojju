@@ -16,7 +16,7 @@ Usage:
     interp.execute('print x')
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __author__ = "Hemanth HM"
 
 from .lexer import Lexer, Token, TokenType
