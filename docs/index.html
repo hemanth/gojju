@@ -249,7 +249,7 @@
         }
 
         .lessons-list {
-            max-height: 450px;
+            max-height: 600px;
             overflow-y: auto;
         }
 
@@ -784,6 +784,20 @@
                 examples: ["2 ** 10", "head([1,2,3])", "tail([1,2,3])"]
             },
             {
+                title: "Compose & Curry",
+                content: `<h3>Function Composition</h3>
+                    <p><code>compose</code> combines functions: compose(f, g)(x) = f(g(x))</p>
+                    <p><code>curry</code> transforms multi-arg functions into chains of single-arg functions.</p>`,
+                examples: ["sum([1, 2, 3, 4, 5])", "[1, 2, 3] |> sum", "range(1, 6) |> sum"]
+            },
+            {
+                title: "Maybe & Either",
+                content: `<h3>Monads for Safe Code</h3>
+                    <p><code>Just(x)</code> wraps a value, <code>Nothing()</code> represents absence.</p>
+                    <p><code>Right(x)</code> is success, <code>Left(x)</code> is failure.</p>`,
+                examples: ["range(5)", "[x * x for x in range(5)]", "sum([1, 2, 3, 4, 5])"]
+            },
+            {
                 title: "Boolean Logic",
                 content: `<h3>Boolean Operations</h3>
                     <p>Use <code>and</code>, <code>or</code>, <code>not</code> for logical operations.</p>
@@ -814,10 +828,13 @@
             '[1, 2, 3, 4, 5]': '[1, 2, 3, 4, 5]',
             '[1, 2, 3]': '[1, 2, 3]',
             'head([1, 2, 3])': '1',
+            'head([1,2,3])': '1',
             'tail([1, 2, 3])': '[2, 3]',
+            'tail([1,2,3])': '[2, 3]',
             'len([1, 2, 3, 4, 5])': '5',
             'len([1, 2, 3])': '3',
             '[x * x for x in range(5)]': '[0, 1, 4, 9, 16]',
+            '[x*x for x in range(5)]': '[0, 1, 4, 9, 16]',
             '[x for x in range(10) if x % 2 == 0]': '[0, 2, 4, 6, 8]',
             'range(1, 6)': '[1, 2, 3, 4, 5]',
             'range(5)': '[0, 1, 2, 3, 4]',
@@ -831,6 +848,7 @@
             '[1, 2, 3] |> sum': '6',
             '[1, 2, 3, 4, 5] |> sum': '15',
             'range(5) |> sum': '10',
+            'range(1, 6) |> sum': '15',
             '[1, 2, 3] |> map(\\x -> x * 2)': '[2, 4, 6]',
             '[1, 2, 3, 4] |> filter(\\x -> x > 2)': '[3, 4]',
             'range(1, 6) |> map(\\x -> x * x)': '[1, 4, 9, 16, 25]',
@@ -932,8 +950,18 @@
             } else if (code.startsWith('let ')) {
                 const match = code.match(/let (\w+) = (.+)/);
                 if (match) {
-                    memory[match[1]] = match[2];
-                    resultLine.innerHTML = `<span class="repl-result">=> ${match[2]}</span>`;
+                    const varName = match[1];
+                    const value = match[2];
+                    // Check if it's a function definition
+                    if (value.includes('=>') || value.includes('->')) {
+                        memory[varName] = '<function>';
+                        resultLine.innerHTML = `<span class="repl-result">=> <function></span>`;
+                    } else {
+                        memory[varName] = value;
+                        resultLine.innerHTML = `<span class="repl-result">=> ${value}</span>`;
+                    }
+                } else {
+                    resultLine.innerHTML = `<span class="repl-result">=> nil</span>`;
                 }
             } else if (memory[code]) {
                 resultLine.innerHTML = `<span class="repl-result">=> ${memory[code]}</span>`;
