@@ -254,8 +254,8 @@ Nothing().map(\x -> x * 2).get_or(0) # 0
 
 ## Examples
 
-See the [examples directory](examples/) for more:
+See the [examples directory](https://github.com/hemanth/gojju/tree/main/examples) for more:
 
-- [Hello World](examples/hello)
-- [Functional Programming](examples/fp)
-- [Pattern Matching](examples/pattern-matching)
+- [Hello World](https://github.com/hemanth/gojju/blob/main/examples/hello.gj)
+- [Functional Programming](https://github.com/hemanth/gojju/blob/main/examples/fp.gj)
+- [Pattern Matching](https://github.com/hemanth/gojju/blob/main/examples/pattern_matching.gj)
